@@ -1,12 +1,12 @@
 <header>
-    <nav class="bg-neutral-primary/95 backdrop-blur-sm supports-[backdrop-filter]:bg-neutral-primary/90 fixed w-full z-20 top-0 inset-s-0 border-b border-default">
+    <nav class="bg-neutral-primary/95 backdrop-blur-sm supports-backdrop-filter:bg-neutral-primary/90 fixed w-full z-20 top-0 inset-s-0 border-b border-default px-0.5 max-h-18">
         <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo">
                 <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
             </a>
             <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
-                <button type="button" class="cursor-pointer text-primary-foreground bg-primary hover:bg-primary/90 box-border border border-transparent focus:ring-4 focus:ring-primary-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">Plataforma JIC</button>
+                <button type="button" class="cursor-pointer text-primary-foreground bg-primary hover:bg-primary/90 box-border border border-transparent focus:ring-3 focus:ring-cobalt-700 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2 focus:outline-none">Plataforma JIC</button>
                 <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base lg:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Abrir menú principal</span>
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>

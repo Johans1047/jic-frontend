@@ -1,22 +1,16 @@
 <script lang="ts">
-	import Hero from "../components/home/hero-section.svelte";
-	import Dates from "../components/home/dates-section.svelte";
-	import Quick from "../components/home/quick-section.svelte";
-	import Winners from "../components/home/winners-section.svelte";
+	import Title from "$lib/components/home/title-section.svelte";
+	import Dates from "$lib/components/home/dates-section.svelte";
+	import Quick from "$lib/components/home/quick-section.svelte";
+	import Winners from "$lib/components/home/winners-section.svelte";
 </script>
 
 <svelte:head>
-  <title>Home</title>
+  <title>Inicio</title>
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<Hero />
+<Title />
 <Dates />
 <Quick />
 <Winners />
-
-
-
-
-
-

@@ -1,18 +1,17 @@
 <script lang="ts">
-  import "./layout.css";
-  import Header from "../components/header.svelte";
-  import Footer from "../components/footer.svelte";
+  import "../layout.css"
+  import Header from "$lib/components/header.svelte";
+  import Footer from "$lib/components/footer.svelte";
 
   let { children } = $props();
 </script>
 
 <div class="app">
   <Header />
-  <main>
+  <main class="pt-18">
     {@render children()}
   </main>
   <Footer />
-  
 </div>
 
 <style>
