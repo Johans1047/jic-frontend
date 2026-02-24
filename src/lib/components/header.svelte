@@ -1,5 +1,5 @@
 <header>
-    <nav class="bg-neutral-primary/95 backdrop-blur-sm supports-backdrop-filter:bg-neutral-primary/90 fixed w-full z-20 top-0 inset-s-0 border-b border-default px-0.5 max-h-18">
+    <nav class="bg-neutral-primary/95 backdrop-blur-sm supports-backdrop-filter:bg-neutral-primary/85 fixed w-full z-20 top-0 inset-s-0 border-b border-default px-0.5 max-h-18">
         <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo">

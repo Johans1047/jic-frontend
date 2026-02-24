@@ -1,8 +1,9 @@
 <script lang="ts">
-	import Title from "$lib/components/home/title-section.svelte";
-	import Dates from "$lib/components/home/dates-section.svelte";
-	import Quick from "$lib/components/home/quick-section.svelte";
-	import Winners from "$lib/components/home/winners-section.svelte";
+	import Title from "$lib/components/inicio/title-section.svelte";
+	import Dates from "$lib/components/inicio/dates-section.svelte";
+	import Quick from "$lib/components/inicio/quick-section.svelte";
+	import Winners from "$lib/components/inicio/winners-section.svelte";
+	import FAQs from "$lib/components/inicio/faqs-section.svelte";
 </script>
 
 <svelte:head>
@@ -14,3 +15,4 @@
 <Dates />
 <Quick />
 <Winners />
+<FAQs />
