@@ -21,7 +21,7 @@
                 ></path></svg
             >
             <h2 class="font-serif text-2xl text-foreground md:text-3xl">
-                Categorías 2025
+                Categorías
             </h2>
         </div>
         <div class="grid gap-4 sm:grid-cols-2">
