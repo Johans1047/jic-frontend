@@ -127,12 +127,6 @@
                             >SENACYT</a
                         >
                     </li>
-                    <li>
-                        <a
-                            class="text-sm opacity-70 transition-opacity hover:opacity-100"
-                            href="https://revistas.utp.ac.pa">Revista RIC</a
-                        >
-                    </li>
                 </ul>
             </div>
         </div>

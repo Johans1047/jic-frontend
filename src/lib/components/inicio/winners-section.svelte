@@ -60,7 +60,7 @@
                 ></a
             >
         </div>
-        <div class="grid gap-4 md:grid-cols-3">
+        <div class="grid gap-4 md:grid-cols-4">
             <div
                 class="rounded-xl bg-primary-foreground/10 p-6 backdrop-blur-sm"
             >
@@ -91,6 +91,22 @@
                 </h3>
                 <p class="mt-2 text-sm text-primary-foreground/60">
                     UP<!-- --> · <!-- -->2024
+                </p>
+            </div>
+            <div
+                class="rounded-xl bg-primary-foreground/10 p-6 backdrop-blur-sm"
+            >
+                <span
+                    class="inline-block rounded-full bg-amber-300/15 px-3 py-1 text-xs font-semibold text-amber-300/90"
+                    >Ciencias Naturales</span
+                >
+                <h3
+                    class="mt-3 text-lg font-semibold leading-snug text-primary-foreground"
+                >
+                    Modelado matematico de ecosistemas costeros
+                </h3>
+                <p class="mt-2 text-sm text-primary-foreground/60">
+                    UTP<!-- --> · <!-- -->2024
                 </p>
             </div>
             <div

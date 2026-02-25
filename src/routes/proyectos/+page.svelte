@@ -148,7 +148,6 @@
     titulo="Proyectos"
     descripcion="Repositorio histórico de proyectos de investigación presentados en la JIC."
 />
-
 <TabsFilters 
     bind:tab={tab}
     bind:yearFilter={yearFilter}
@@ -157,5 +156,4 @@
     {years}
     {categoriesOptions}
 />
-
 <Results {filtered} />

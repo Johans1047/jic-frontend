@@ -163,7 +163,6 @@
                 {#each Object.entries(faqs) as [key, section]}
                     {@const isCatOpen = openCategory === key}
 
-                    <!-- Wrapper con border-b unificado para evitar el salto -->
                     <div class="border-b border-border">
                         <h2 id="category-heading-{key}">
                             <button
@@ -192,9 +191,8 @@
                         </h2>
 
                         {#if isCatOpen}
-                            <!-- overflow-hidden evita que el contenido "aparezca" antes de que termine la animación -->
                             <div
-                                transition:slide={{ duration: 300 }}
+                                transition:slide={{ duration: 700 }}
                                 class="overflow-hidden"
                             >
                                 <div
