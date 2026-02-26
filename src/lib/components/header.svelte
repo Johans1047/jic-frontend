@@ -1,9 +1,9 @@
 <header>
-    <nav class="bg-neutral-primary/95 backdrop-blur-sm supports-backdrop-filter:bg-neutral-primary/95 fixed w-full z-20 top-0 inset-s-0 border-b border-default px-0.5 max-h-18">
+    <nav class="bg-neutral-card/95 backdrop-blur-sm supports-backdrop-filter:bg-card/95 fixed w-full z-20 top-0 inset-s-0 border-b border-default px-0.5 max-h-18">
         <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo">
-                <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
+                <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">LOGO</span>
             </a>
             <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
                 <button type="button" class="cursor-pointer text-primary-foreground bg-primary hover:bg-primary/90 box-border border border-transparent focus:ring-3 focus:ring-cobalt-700 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2 focus:outline-none">Plataforma JIC</button>
@@ -12,8 +12,8 @@
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
                 </button>
             </div>
-            <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-sticky">
-                <ul class="flex flex-col p-4 gap-1 lg:p-0 mt-4 font-medium border border-default rounded-base lg:space-x-1 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
+            <div class="rounded-base items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1 bg-card" id="navbar-sticky">
+                <ul class="flex flex-col p-4 gap-1 lg:p-0 mt-0 font-medium lg:space-x-1 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0">
                     <li>
                         <a class="block lg:rounded-md px-3 py-1.5 lg:py-2 font-medium transition-colors bg-primary/10 text-primary max-lg:rounded-sm" href="/" aria-current="page">Inicio</a>
                     </li>

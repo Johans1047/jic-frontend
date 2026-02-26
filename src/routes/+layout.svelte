@@ -8,7 +8,7 @@
 
 <div class="app">
   <Header />
-  <main class="pt-18">
+  <main class="pt-18 overflow-x-hidden">
     {@render children()}
   </main>
   <Footer />

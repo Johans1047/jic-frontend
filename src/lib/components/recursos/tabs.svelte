@@ -1,4 +1,27 @@
 <script lang="ts">
+    import { fade, scale } from "svelte/transition";
+    let selectedImage: string | null = $state<string | null>(null);
+
+    // Por esto:
+    type Video = {
+        title: string;
+        thumbnail: string;
+        url: string;
+        description?: string;
+        duration?: string;
+    };
+
+    let selectedVideo = $state<Video | null>(null);
+
+    function getEmbedUrl(url: string): string {
+        const match = url.match(
+            /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/,
+        );
+        return match
+            ? `https://www.youtube.com/embed/${match[1]}?autoplay=1`
+            : url;
+    }
+
     let activeTab = $state<
         "docs" | "boletines" | "memorias" | "galeria" | "videos"
     >("docs");
@@ -74,27 +97,25 @@
         {
             title: "Video promocional JIC Nacional",
             thumbnail: "/images/hero-jic.jpg",
-            url: "https://www.youtube.com/watch?v=example1",
+            url: "https://www.youtube.com/watch?v=oispNb8t79o",
+            description:
+                "Conoce la JIC Nacional, el evento de investigacion mas importante para jovenes en Panama.",
         },
         {
             title: "¿Cómo preparar tu proyecto de investigación?",
             thumbnail: "/images/categories-science.jpg",
-            url: "https://www.youtube.com/watch?v=example2",
+            url: "https://www.youtube.com/watch?v=7VAMa-C7wG0",
+            description:
+                "Conoce la JIC Nacional, el evento de investigacion mas importante para jovenes en Panama.",
         },
         {
             title: "Inducción a la JIC 2024",
             thumbnail: "/images/hero-jic.jpg",
-            url: "https://www.youtube.com/watch?v=example3",
+            url: "https://youtu.be/zxKc3FreHTQ?si=CORhb6r9ZoPpMf9d",
+            description:
+                "Conoce la JIC Nacional, el evento de investigacion mas importante para jovenes en Panama.",
         },
     ];
-
-    const tabs = [
-        { id: "docs", label: "Documentos" },
-        { id: "boletines", label: "Boletines" },
-        { id: "memorias", label: "Memorias" },
-        { id: "galeria", label: "Galeria" },
-        { id: "videos", label: "JIC Virtual" },
-    ] as const;
 </script>
 
 <!-- Tabs -->
@@ -394,7 +415,7 @@
                     </h2>
                     <p class="mt-1 text-muted-foreground">
                         Toda la informacion relacionada a las publicaciones
-                        realizadas cada ano.
+                        realizadas cada año.
                     </p>
                 </div>
                 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -443,7 +464,213 @@
                 <h2 class="font-serif text-2xl text-foreground">
                     Galería de fotos
                 </h2>
-                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+                <!-- Botones responsivos -->
+                <div class="flex items-center justify-center flex-wrap gap-2">
+                    <button
+                        type="button"
+                        class="cursor-pointer text-fg-brand border border-brand bg-neutral-primary hover:bg-primary/5 focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-sm md:text-base font-medium px-3 md:px-5 py-2 md:py-2.5 text-center whitespace-nowrap"
+                    >
+                        All categories
+                    </button>
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-sm md:text-base font-medium px-3 md:px-5 py-2 md:py-2.5 text-center whitespace-nowrap"
+                    >
+                        Shoes
+                    </button>
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-sm md:text-base font-medium px-3 md:px-5 py-2 md:py-2.5 text-center whitespace-nowrap"
+                    >
+                        Bags
+                    </button>
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-sm md:text-base font-medium px-3 md:px-5 py-2 md:py-2.5 text-center whitespace-nowrap"
+                    >
+                        Electronics
+                    </button>
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-sm md:text-base font-medium px-3 md:px-5 py-2 md:py-2.5 text-center whitespace-nowrap"
+                    >
+                        Gaming
+                    </button>
+                </div>
+
+                <!-- Grid de imágenes -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {#each ["https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg", "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"] as src}
+                        <button
+                            type="button"
+                            class="overflow-hidden rounded-base border-0 p-0 bg-transparent cursor-pointer"
+                            onclick={() => (selectedImage = src)}
+                        >
+                            <img
+                                class="h-auto w-full rounded-base object-cover transition-transform duration-500 hover:scale-110"
+                                {src}
+                                alt=""
+                            />
+                        </button>
+                    {/each}
+                </div>
+            </div>
+
+            <!-- Lightbox -->
+            {#if selectedImage}
+                <div
+                    transition:fade={{ duration: 200 }}
+                    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+                    role="dialog"
+                    aria-modal="true"
+                    tabindex="-1"
+                    onclick={(e) => {
+                        if (e.target === e.currentTarget) selectedImage = null;
+                    }}
+                    onkeydown={(e) => {
+                        if (e.key === "Escape") selectedImage = null;
+                    }}
+                >
+                    <div
+                        transition:scale={{ duration: 250, start: 0.85 }}
+                        class="relative w-full max-w-3xl"
+                    >
+                        <img
+                            src={selectedImage}
+                            alt="Vista ampliada"
+                            class="w-full h-auto max-h-[85vh] rounded-xl object-contain shadow-2xl"
+                        />
+                        <button
+                            class="cursor-pointer absolute -top-3 -right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center shadow-lg hover:bg-stone-100 text-lg font-bold leading-none"
+                            onclick={() => (selectedImage = null)}
+                        >
+                            ×
+                        </button>
+                    </div>
+                </div>
+            {/if}
+
+            <div class="flex flex-col gap-6">
+                <h2 class="font-serif text-2xl text-foreground">
+                    Galería de fotos
+                </h2>
+
+                <div class="flex items-center justify-center flex-wrap">
+                    <button
+                        type="button"
+                        class="cursor-pointer text-fg-brand border border-brand bg-neutral-primary hover:bg-primary/5 focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-base font-medium px-5 py-2.5 text-center me-3 mb-3"
+                        >All categories</button
+                    >
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-base font-medium px-5 py-2.5 text-center me-3 mb-3"
+                        >Shoes</button
+                    >
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-base font-medium px-5 py-2.5 text-center me-3 mb-3"
+                        >Bags</button
+                    >
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-base font-medium px-5 py-2.5 text-center me-3 mb-3"
+                        >Electronics</button
+                    >
+                    <button
+                        type="button"
+                        class="cursor-pointer text-heading border border-stone-300 hover:border-stone-400 hover:bg-stone-100 bg-neutral-primary focus:ring-4 focus:outline-none focus:ring-neutral-tertiary rounded-base text-base font-medium px-5 py-2.5 text-center me-3 mb-3"
+                        >Gaming</button
+                    >
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-ointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <img
+                            class="h-auto max-w-full rounded-base object-cover transition-transform duration-500 cursor-pointer hover:scale-105"
+                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"
+                            alt=""
+                        />
+                    </div>
+                </div>
+
+                <!-- <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {#each [1, 2, 3, 4, 5, 6] as i}
                         <div
                             class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-secondary"
@@ -453,14 +680,14 @@
                                     ? "/images/categories-science.jpg"
                                     : "/images/hero-jic.jpg"}
                                 alt="Galeria JIC - Imagen {i}"
-                                class="h-full w-full object-cover transition-transform group-hover:scale-105"
+                                class="h-full w-full object-cover transition-transform duration-500 cursor-ointer hover:scale-105"
                             />
                             <div
                                 class="absolute inset-0 bg-foreground/0 transition-colors group-hover:bg-foreground/20"
                             ></div>
                         </div>
                     {/each}
-                </div>
+                </div> -->
             </div>
         {/if}
 
@@ -476,57 +703,195 @@
                         estudiantes.
                     </p>
                 </div>
+
                 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {#each videos as v}
-                        <a
-                            href={v.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <div
                             class="group overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/30 hover:shadow-md"
                         >
-                            <div class="relative aspect-video bg-secondary">
+                            <!-- Thumbnail clickeable -->
+                            <button
+                                class="relative aspect-video w-full bg-secondary cursor-pointer"
+                                onclick={() => (selectedVideo = v)}
+                                aria-label="Reproducir {v.title}"
+                            >
                                 <img
                                     src={v.thumbnail}
                                     alt={v.title}
                                     class="h-full w-full object-cover"
                                 />
+                                <!-- Overlay con botón play -->
                                 <div
                                     class="absolute inset-0 flex items-center justify-center bg-foreground/30 opacity-0 transition-opacity group-hover:opacity-100"
                                 >
                                     <div
-                                        class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-foreground/90"
+                                        class="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 shadow-lg"
                                     >
-                                        <!-- Play icon -->
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
+                                            class="h-6 w-6 text-primary translate-x-0.5"
+                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <polygon
+                                                points="5 3 19 12 5 21 5 3"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- Badge duración si existe -->
+                                {#if v.duration}
+                                    <span
+                                        class="absolute bottom-2 right-2 rounded bg-black/70 px-1.5 py-0.5 text-xs font-medium text-white"
+                                    >
+                                        {v.duration}
+                                    </span>
+                                {/if}
+                            </button>
+
+                            <div class="p-4 flex flex-col gap-3">
+                                <h3
+                                    class="font-semibold text-foreground leading-snug group-hover:text-primary line-clamp-2"
+                                >
+                                    {v.title}
+                                </h3>
+                                {#if v.description}
+                                    <p
+                                        class="text-sm text-muted-foreground line-clamp-2"
+                                    >
+                                        {v.description}
+                                    </p>
+                                {/if}
+
+                                <!-- Botones de acción -->
+                                <div class="flex items-center gap-2 pt-1">
+                                    <button
+                                        onclick={() => (selectedVideo = v)}
+                                        class="cursor-pointer inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3.5 w-3.5"
+                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <polygon
+                                                points="5 3 19 12 5 21 5 3"
+                                            />
+                                        </svg>
+                                        Reproducir
+                                    </button>
+                                    <a
+                                        href={v.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="12"
+                                            height="12"
                                             viewBox="0 0 24 24"
                                             fill="none"
                                             stroke="currentColor"
                                             stroke-width="2"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            class="h-5 w-5 text-primary"
-                                            aria-hidden="true"
-                                            ><polygon
-                                                points="5 3 19 12 5 21 5 3"
-                                            ></polygon></svg
                                         >
-                                    </div>
+                                            <path
+                                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                            />
+                                            <polyline points="15 3 21 3 21 9" />
+                                            <line
+                                                x1="10"
+                                                y1="14"
+                                                x2="21"
+                                                y2="3"
+                                            />
+                                        </svg>
+                                        Ver en YouTube
+                                    </a>
                                 </div>
                             </div>
-                            <div class="p-4">
-                                <h3
-                                    class="font-semibold text-foreground group-hover:text-primary"
-                                >
-                                    {v.title}
-                                </h3>
-                            </div>
-                        </a>
+                        </div>
                     {/each}
                 </div>
             </div>
+
+            <!-- Modal reproductor -->
+            {#if selectedVideo}
+                <div
+                    transition:fade={{ duration: 200 }}
+                    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+                    onclick={(e) => {
+                        if (e.target === e.currentTarget) selectedVideo = null;
+                    }}
+                    onkeydown={(e) => {
+                        if (e.key === "Escape") selectedVideo = null;
+                    }}
+                    role="dialog"
+                    aria-modal="true"
+                    tabindex="-1"
+                >
+                    <div
+                        transition:scale={{ duration: 250, start: 0.9 }}
+                        class="relative w-full max-w-3xl rounded-2xl bg-card shadow-2xl overflow-hidden"
+                    >
+                        <!-- Header del modal -->
+                        <div
+                            class="flex items-start justify-between gap-4 p-4 border-b border-border"
+                        >
+                            <h3
+                                class="font-semibold text-foreground leading-snug line-clamp-2"
+                            >
+                                {selectedVideo.title}
+                            </h3>
+                            <button
+                                onclick={() => (selectedVideo = null)}
+                                class="cursor-pointer shrink-0 rounded-lg p-1 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+                                aria-label="Cerrar"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Reproductor iframe -->
+                        <div class="aspect-video w-full bg-black">
+                            <iframe
+                                src={getEmbedUrl(selectedVideo.url)}
+                                title={selectedVideo.title}
+                                class="h-full w-full"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+
+                        <!-- Footer del modal -->
+                        {#if selectedVideo.description}
+                            <div class="p-4 border-t border-border">
+                                <p class="text-sm text-muted-foreground">
+                                    {selectedVideo.description}
+                                </p>
+                            </div>
+                        {/if}
+                    </div>
+                </div>
+            {/if}
         {/if}
     </div>
 </section>

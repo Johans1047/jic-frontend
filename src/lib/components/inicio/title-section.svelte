@@ -35,6 +35,9 @@
                     ></rect><path d="M3 10h18"></path></svg
                 ><span>JIC Nacional 2025</span>
             </div>
+            <div class="text-6xl text-white">
+                LOGO
+            </div>
             <h1
                 class="font-serif text-4xl leading-tight text-background md:text-5xl lg:text-6xl"
             >

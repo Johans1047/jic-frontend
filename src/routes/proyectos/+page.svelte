@@ -2,6 +2,7 @@
     import Hero from "$lib/components/hero.svelte";
     import TabsFilters from "$lib/components/proyectos/tabs-filters.svelte";
     import Results from "$lib/components/proyectos/results.svelte";
+    import Pagination from "$lib/components/pagination.svelte";
 
     const years = [2024, 2023, 2022];
     const categoriesOptions = [
@@ -157,3 +158,4 @@
     {categoriesOptions}
 />
 <Results {filtered} />
+<Pagination color="bg-stone-50" />

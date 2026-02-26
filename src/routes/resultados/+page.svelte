@@ -2,6 +2,7 @@
     import ResultsHistory from "$lib/components/resultados/historical.svelte";
     import Results from "$lib/components/resultados/results.svelte";
     import Hero from "$lib/components/hero.svelte";
+    import Pagination from "$lib/components/pagination.svelte";
 
     const historicalResults = [
         {
@@ -69,3 +70,4 @@
 
 <Results />
 <ResultsHistory {historicalResults} />
+<Pagination color="bg-card" />
